@@ -6,9 +6,9 @@ The real challenge of this journey is that I plan to work and game from this mac
 I will be listing the packages and tweaks so that if in the future for some reason I need to do this again to not stop from 0
 
 ## Timeshift
-This is one of those package I cannot live without, It allows me to confidently change and tweak aspects of my system without the fear of accidently bricking my system. Quoting the wiki
+This is one of those package I cannot live without, It allows me to confidently change and tweak aspects of my system without the fear of accidently bricking my system. Quoting the [wiki](https://wiki.archlinux.org/title/Timeshift)
 
 > Timeshift helps create incremental snapshots of the file system at regular intervals, which can then be restored at a later date to undo all changes to the system.
 
 It can be installed directly from the Arch repository ``` sudo pacman -S timeshift ```
-
+One important detail that I just learned while checking the wiki is that we can schedule the timeshift process to run in the background using [cron](https://wiki.archlinux.org/title/Cron#Configuration)
