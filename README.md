@@ -10,5 +10,16 @@ This is one of those package I cannot live without, It allows me to confidently 
 
 > Timeshift helps create incremental snapshots of the file system at regular intervals, which can then be restored at a later date to undo all changes to the system.
 
-It can be installed directly from the Arch repository ``` sudo pacman -S timeshift ```
-One important detail that I just learned while checking the wiki is that we can schedule the timeshift process to run in the background using [cron](https://wiki.archlinux.org/title/Cron#Configuration)
+It can be installed directly from the Arch repository 
+
+``` 
+sudo pacman -S timeshift
+```
+
+One important detail that I just learned while checking the wiki is that we can schedule the timeshift process to run in the background using [cron](https://wiki.archlinux.org/title/Cron#Configuration) however, we are installing the package [timeshift-systemd-timer](https://aur.archlinux.org/packages/timeshift-systemd-timer) which creates a systemd unit. Please read on how systemctl works in the [RedHat wiki](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/system_administrators_guide/chap-managing_services_with_systemd)
+
+In this case we have a boot instance and an hourly instance so, we have to enable them and start them
+```
+systemctl enable timeshift-boot.timer
+systemctl start timeshift-boot.service
+```
