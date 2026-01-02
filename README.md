@@ -49,4 +49,12 @@ You must press
 >
 
 ## Secondary drives
-In this machine I have 2 drives, one is a M.2 SSD and the other one is a HDD, I have Linux installed on the M.2 but I want to store games, documents, videos, etc on the other drive. The first issue I run into is that every time I try to access the disk it always asks for root permisions, so I cannot access it unless I put my password first, which totally kills the point of what I want to do. The solution to this is called fstab
+In this machine I have 2 drives, one is a M.2 SSD and the other one is a HDD, I have Linux installed on the M.2 but I want to store games, documents, videos, etc on the other drive. The first issue I ran into is that every time that I try to access the disk it always asks for root permisions, so I cannot access it unless I put my password first, which totally kills the point of what we are trying to do. The solution to this is called fstab, which is a file located in ``` /etc/fstab ``` that tells the system how the disks should be mounted in order for the system to work, so the trick is to place the information of our external drive here so it mounts at boot, here is an example of how I mounted mine
+
+```
+# Mount for the extra disk
+# <file system>      <mount point>   <type>  <options>                               <dump>  <pass>
+UUID=(uuid here)    /mnt/extra      btrfs    defaults,noatime,compress=zstd,nofail    0    0
+```
+>[!NOTE]
+> We need to create a static folder on root to make sure the directory exists before mounting the drive, this means that is not a good idea to use /tmp as it gets clean on boot, so were creating a folder in ```/mnt``` where the extra drive will always be.
