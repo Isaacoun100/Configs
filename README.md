@@ -47,3 +47,6 @@ You must press
 > 
 > **B** Reboot
 >
+
+## Secondary drives
+In this machine I have 2 drives, one is a M.2 SSD and the other one is a HDD, I have Linux installed on the M.2 but I want to store games, documents, videos, etc on the other drive. The first issue I run into is that every time I try to access the disk it always asks for root permisions, so I cannot access it unless I put my password first, which totally kills the point of what I want to do. The solution to this is called fstab
