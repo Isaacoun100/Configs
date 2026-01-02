@@ -58,3 +58,11 @@ UUID=(uuid here)    /mnt/extra      btrfs    defaults,noatime,compress=zstd,nofa
 ```
 >[!NOTE]
 > We need to create a static folder on root to make sure the directory exists before mounting the drive, this means that is not a good idea to use /tmp as it gets clean on boot, so were creating a folder in ```/mnt``` where the extra drive will always be.
+
+The options section are instructions that we give the kernel to know how to treat the disk. First we have the defaults, which provide the users with rwx permissions and makes it accessible, second we got the noatime, which helps reduce the load, quoting the [wiki](https://wiki.archlinux.org/title/Fstab#atime_options)
+
+
+> The noatime option fully disables writing file access times to the drive every time you read a file. This works well for almost all applications, except for those that need to know if a file has been read since the last time it was modified. The write time information to a file will continue to be updated anytime the file is written to with this option enabled.
+
+
+Third we have compress=zstd which is a compressing system that it also helps the disk to prevent extra reads, and last nofail, which makes it so that if we have a fatal error on the disk for some reason the system will still attempt to boot.
