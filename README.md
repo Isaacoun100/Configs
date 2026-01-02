@@ -10,6 +10,7 @@ I will be listing the packages and tweaks so that if in the future for some reas
 ## Timeshift
 This is one of those package I cannot live without, It allows me to confidently change and tweak aspects of my system without the fear of accidently bricking my system. Quoting the [wiki](https://wiki.archlinux.org/title/Timeshift)
 
+> [!NOTE]
 > Timeshift helps create incremental snapshots of the file system at regular intervals, which can then be restored at a later date to undo all changes to the system.
 
 It can be installed directly from the Arch repository 
@@ -29,3 +30,20 @@ systemctl start timeshift-boot.service
 ## Arch chroot
 This is a safety measure that comes preinstalled and configured on EndeavourOS, if you happen to have an accident where for example you loose your bootloader or for some reason lost access, and if Timeshift didn't work, then as a last measure you can use chroot. Follow the instructions in the EndeavourOS wiki [here](https://discovery.endeavouros.com/system-rescue/arch-chroot/)
 
+## Magic SysRq Key (REISUB)
+If you get a fatal error that absolutely freezes the system there is a resource that can be used to safely reboot the machine preventing any issue that may arise, this is the Magic Key, which allow us to give instructions directly to the kernel regardless of the state of the computer. Please follow the [wiki](https://forum.endeavouros.com/t/tip-enable-magic-sysrq-key-reisub/7576) instructions.
+You must press 
+
+> Alt + (Print) +
+> **R** Switch to XLATE mode
+> 
+> **E** Send the signal SIGTERM to gracefully terminate all processes
+> 
+> **I** Send the signal SIGKILL to kill all processes that didn’t terminate gracefully
+> 
+> **S** Sync data to disk (flush)
+> 
+> **U** Unmount the filesystem (and remount as read-only)
+> 
+> **B** Reboot
+>
